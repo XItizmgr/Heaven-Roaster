@@ -18,7 +18,7 @@
 
 html {
   font-size: 62.5%; /* 1rem = 10px */
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
 }
 
 body {
@@ -28,12 +28,15 @@ body {
 
 .nav-bar {
   width: 100%;
+  height: 8rem;
   display: flex;
   position: fixed;
   top: 0;
   align-items: center;
   justify-content: space-between;
-  padding: 0px clamp(2rem, 3vw, 3rem);
+  padding: 0 clamp(2rem, 4vw, 6rem);
+  backdrop-filter: blur(10px);
+  background-color: var(--primarybackground);
   z-index: 1000;
 }
 
@@ -59,6 +62,13 @@ body {
 .nav-item a:hover {
   color: black;
 }
+.nav-item a:focus {
+  color: black;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--typography);
+  text-decoration-thickness: 2px;
+}
 
 .nav-bar button {
   padding: 1.1rem 2rem;
@@ -74,12 +84,62 @@ body {
     transform: scale(1.05);
   }
 }
-
+section {
+  /* min-height: 100vh; */
+  scroll-margin-top: 8rem;
+}
 #section-1 {
-  overflow: hidden;
   height: calc(100vh - 8rem);
-  padding: 3rem;
-  padding-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 8rem);
+  padding: clamp(2rem, 6vw, 6rem);
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  padding: 10rem 0;
+  gap: 2rem;
+}
+
+.hero-text {
+  font-size: clamp(4rem, 6vw, 7rem);
+  font-weight: 900;
+  line-height: 1.1;
+  font-family: "Inria Serif", serif;
+  color: var(--typography);
+  text-align: center;
+}
+.sub-text {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 500;
+  color: var(--typography);
+  text-align: center;
+  margin-top: 3rem;
+  
+}
+.shop-now {
+  width: 15rem;
+  height: 4rem;
+  border-radius: 0.5rem;
+  background-color: var(--button-background);
+  font-size: medium;
+  font-weight: bold;
+  border-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: auto;
+}
+.image {
+  filter: drop-shadow(0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.5));
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
@@ -204,23 +264,6 @@ button:hover {
   display: none;
 }
 
-.section-1-main {
-  display: flex;
-  justify-content: space-between;
-  padding: clamp(2rem, 6vw, 6rem);
-}
-
-.hero-text {
-  font-size: clamp(3rem, 8vw, 5rem);
-  font-weight: 1000;
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--typography);
-}
-
-.image {
-  filter: drop-shadow(0.4rem 0.4rem 0.5rem rgba(0, 0, 0, 0.5));
-}
-
 /* for mobile */
 
 @media (max-width: 426px) {
@@ -318,7 +361,7 @@ button:hover {
 .menu-header p {
   font-size: 1.6rem;
   line-height: 1.7;
-  opacity: 0.75;
+  opacity: 0.8;
 }
 .menu-carousel {
   position: relative;
@@ -415,7 +458,12 @@ button:hover {
   display: flex;
   justify-content: center;
 }
-.menu-more-section button {
+.menu-more-section a {
+  text-decoration: none;
+  font-size: 2rem;
+  font-variant: small-caps;
+  font-weight: 900;
+  color: var(--typography);
   padding: 1.1rem 2rem;
   border-radius: 12px;
   background-color: var(--button-background);
@@ -426,26 +474,8 @@ button:hover {
     transform: scale(1.05);
   }
 }
-.menu-more-section button a {
-  text-decoration: none;
-  font-size: 2rem;
-  font-variant: small-caps;
-  font-weight: 900;
-  color: var(--typography);
-}
-
-.profile {
-  position: fixed;
-  z-index: 2000;
-  top: 0;
-  right: 0;
-  background-color: #aeaaaa;
-  height: 100%;
-  width: 200px;
-}
-.user_profile {
-  width: 100px;
-  height: 50px;
+.shop-more-section a:hover {
+  transform: scale(1.05);
 }
 footer {
   background-color: #3e3133c9;
@@ -455,4 +485,22 @@ footer {
 }
 footer p {
   font-size: 1.8rem;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  color: var(--typography);
+  border: none;
+  padding: 1rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+}
+
+.scroll-to-top img {
+  width: 20px;
+  height: 20px;
 }

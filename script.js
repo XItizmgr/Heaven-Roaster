@@ -59,6 +59,7 @@ const currentYear = new Date().getFullYear();
 year.textContent = `©${currentYear} Haven Roaster. All rights reserved.`;
 // navbar scroll effect
 const navbar = document.querySelector(".nav-bar");
+const scrolltop = document.querySelector(".scroll-to-top");
 window.addEventListener("scroll", () => {
  const scrollheight = window.scrollY
  const navheight = navbar.getBoundingClientRect().height;
@@ -68,4 +69,14 @@ window.addEventListener("scroll", () => {
   navbar.classList.remove("scrolled");
  }
  console.log(scrollheight,navheight);
+ if(scrollheight > 500){
+  scrolltop.style.display = "block";
+ } else {
+  scrolltop.style.display = "none";
+ }
+});
+scrolltop.addEventListener("click", () => {  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 });

@@ -12,12 +12,18 @@
       href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
       <nav class="nav-bar">
         <img
-          src="./assects/logo-removebg-preview.png"
+          src="./assects/logobackgroundremove.png"
           alt="coffee"
           width="160px"
           height="100px"
@@ -36,73 +42,22 @@
 
         <img src="./assects/more.png" width="20px" class="ham" />
         <button class="book-now">Buy Now</button>
-      </nav>  
+      </nav>
     </header>
     <main>
       <section class="Hero" id="section-1">
-        <div class="section-1-main">
-          <div class="text">
-            <p class="hero-text">FIND YOUR HAVEN</p>
-            <p class="hero-text">IN EVERY SIP</p>
-            <span></span>
-          </div>
-          <img
-            class="image"
-            src="./assects/Gemini_Generated_Image_3v888x3v888x3v88-removebg-preview.png"
-            alt=""
-          />
+        <div class="text">
+          <p class="hero-text">FIND YOUR HAVEN IN EVERY SIP</p>
+         <span class="sub-text">
+            Discover the art of coffee at our roastery, where passion meets
+            perfection in every cup.
+          </span>
+          <button class="shop-now">Order Now</button>
         </div>
+        <div class="images">
+        <img class="image" src="./assects/signature...-removebg-preview.png" alt="" />
+        
 
-        <div class="container">
-          <div class="card">
-            <h2 class="title">Registration</h2>
-            <br />
-            <form>
-              <input
-                type="text"
-                placeholder="Enter your display name"
-                class="input"
-              />
-              <input
-                type="email"
-                placeholder="Enter your email"
-                class="input"
-              />
-              <input
-                type="password"
-                placeholder="Create password"
-                class="input"
-              />
-              <input
-                type="password"
-                placeholder="Confirm password"
-                class="input"
-              />
-
-              <label class="checkbox">
-                <input type="checkbox" />
-                <span>I accept all terms & conditions</span>
-              </label>
-
-              <button type="submit">Register Now</button>
-            </form>
-            <p class="login-text">Already have an account?</p>
-            <br />
-            <button type="button" class="login">Login now</button>
-          </div>
-          <div class="second-card">
-            <h2 class="title">Login Form</h2>
-            <br />
-            <form>
-              <input
-                type="text"
-                placeholder="Enter your email or User name "
-                class="input"
-              />
-              <input type="password" placeholder="password" class="input" />
-              <button type="submit" class="second-login">Login now</button>
-            </form>
-          </div>
         </div>
       </section>
       <section class="About" id="section-2">
@@ -207,28 +162,67 @@
           </div>
         </div>
         <div class="menu-more-section">
-          <button type="button">
-            <a href="./menu.html" target="_blank">Shop more</a>
-          </button>
+          <a href="./menu.html" target="_blank">Shop more</a>
         </div>
       </section>
 
       <section class="Review" id="section-4"></section>
     </main>
     <div class="scroll-to-top">
-      <img src="./assects/arrow.png" alt="Scroll to top" />
+      <img src="./assects/up-arrow.png" alt="Scroll to top" />
+    </div>
     <footer>
       <p class="upto-date"></p>
     </footer>
-    <!-- <div class="modal-root">  
-        <div class="profile">
-          <img src="./assects/user.png" alt="User_profile_picture" class="user_profile">
-          <p class="User_id">Kshitiz Budha Magar</p>
+    <div class="overlay">
+      <div class="container">
+        <div class="card">
+          <h2 class="title">Registration</h2>
+          <br />
+          <form>
+            <input
+              type="text"
+              placeholder="Enter your display name"
+              class="input"
+            />
+            <input type="email" placeholder="Enter your email" class="input" />
+            <input
+              type="password"
+              placeholder="Create password"
+              class="input"
+            />
+            <input
+              type="password"
+              placeholder="Confirm password"
+              class="input"
+            />
 
+            <label class="checkbox">
+              <input type="checkbox" />
+              <span>I accept all terms & conditions</span>
+            </label>
+
+            <button type="submit">Register Now</button>
+          </form>
+          <p class="login-text">Already have an account?</p>
+          <br />
+          <button type="button" class="login">Login now</button>
         </div>
-
-    </div> -->
-
+        <div class="second-card">
+          <h2 class="title">Login Form</h2>
+          <br />
+          <form>
+            <input
+              type="text"
+              placeholder="Enter your email or User name "
+              class="input"
+            />
+            <input type="password" placeholder="password" class="input" />
+            <button type="submit" class="second-login">Login now</button>
+          </form>
+        </div>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
