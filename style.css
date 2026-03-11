@@ -98,8 +98,8 @@ section {
 .text {
   display: flex;
   flex-direction: column;
-  padding: 10rem 0;
-  gap: 2rem;
+  padding: 10rem 0 7rem 0;
+  gap: 3rem;
 }
 
 .hero-text {
@@ -109,14 +109,16 @@ section {
   font-family: "Inria Serif", serif;
   color: var(--typography);
   text-align: center;
+  animation: fadeup 1s ease-out forwards;
+
+
 }
 .sub-text {
   font-size: clamp(1.4rem, 3vw, 2rem);
   font-weight: 500;
   color: var(--typography);
   text-align: center;
-  margin-top: 3rem;
-  
+  animation: fadeup 1s ease-out forwards;
 }
 .shop-now {
   width: 15rem;
@@ -131,15 +133,60 @@ section {
   align-items: center;
   cursor: pointer;
   margin: auto;
+  animation: fadeup 1s ease-out forwards;
+}
+.images {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+  animation: imagefadein 1s ease-out forwards;
+
 }
 .image {
-  filter: drop-shadow(0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.5));
-  width: 100%;
-  max-width: 600px;
+  filter: drop-shadow(-4rem 0.8rem 0.7rem rgba(0, 0, 0, 0.5));
+  width: 440px;
+  max-width: 800px;
   height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 53%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes fadeup {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+}
+/* 
+@keyframes fadeOutOnScroll {
+  from {
+    opacity: 1;
+    transform:  scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9); 
+  }
+} */
+
+@keyframes imagefadein {
+  from {
+    opacity: 0;
+    transform: translatex(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translatex(0);
+  }
+  
 }
 
 .container {
@@ -489,7 +536,7 @@ footer p {
 
 .scroll-to-top {
   position: fixed;
-  bottom: 2rem;
+  bottom: 5.5rem;
   right: 2rem;
   color: var(--typography);
   border: none;
