@@ -14,7 +14,6 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
-
 const openBtn = document.querySelector(".book-now");
 const container = document.querySelector(".container");
 const card1 = document.querySelector(".card");
@@ -41,8 +40,6 @@ login.addEventListener("click", () => {
   card2.classList.add("show");
 });
 
-
-
 // carousel code
 // const carousel = document.querySelector(".menu-carousel");
 // carousel.addEventListener("wheel", (e) => {
@@ -56,27 +53,43 @@ login.addEventListener("click", () => {
 // footer year update
 const year = document.querySelector(".upto-date");
 const currentYear = new Date().getFullYear();
-year.textContent = `©${currentYear} Haven Roaster. All rights reserved.`;
+year.textContent = `©${currentYear} Haven Roaster. All rights reserved to Haven Roaster.`;
 // navbar scroll effect
 const navbar = document.querySelector(".nav-bar");
 const scrolltop = document.querySelector(".scroll-to-top");
 window.addEventListener("scroll", () => {
- const scrollheight = window.scrollY
- const navheight = navbar.getBoundingClientRect().height;
- if(scrollheight > navheight){
-  navbar.classList.add("scrolled");
- } else {
-  navbar.classList.remove("scrolled");
- }
- console.log(scrollheight,navheight);
- if(scrollheight > 500){
-  scrolltop.style.display = "block";
- } else {
-  scrolltop.style.display = "none";
- }
+  const scrollheight = window.scrollY;
+  const navheight = navbar.getBoundingClientRect().height;
+  if (scrollheight > navheight) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+  if (scrollheight > 500) {
+    scrolltop.style.display = "block";
+  } else {
+    scrolltop.style.display = "none";
+  }
 });
-scrolltop.addEventListener("click", () => {  window.scrollTo({
+scrolltop.addEventListener("click", () => {
+  window.scrollTo({
     top: 0,
     behavior: "smooth",
   });
+});
+
+const menucard = document.querySelector(".menu-flex");
+const order = document.querySelector(".shop-now");
+menucard.addEventListener("click", (event) => {
+  if (menucard.contains(event.target)) {
+    card1.classList.add("show");
+    container.classList.add("hidden");
+    console.log("clicked");
+    console.log(event.target);
+    return;
+  }
+});
+order.addEventListener("click", () => {
+  card1.classList.add("show");
+  container.classList.add("hidden");
 });

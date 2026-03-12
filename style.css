@@ -17,7 +17,7 @@
 }
 
 html {
-  font-size: 62.5%; /* 1rem = 10px */
+  font-size: 62.5%;
   scroll-behavior: smooth !important;
 }
 
@@ -54,22 +54,32 @@ body {
 
 .nav-item a {
   color: var(--typography);
-  text-decoration: none;
+  position: relative;
   font-size: large;
   font-weight: 600;
+  transition: 0.3s ease;
+  text-decoration: none;
+}
+.nav-item a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: var(--typography);
+  left: 0;
+  bottom: -4px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.nav-item a:hover::after {
+  transform: scaleX(1);
 }
 
 .nav-item a:hover {
   color: black;
+  transition: all 0.3s ease;
 }
-.nav-item a:focus {
-  color: black;
-  font-weight: 700;
-  text-decoration: underline;
-  text-decoration-color: var(--typography);
-  text-decoration-thickness: 2px;
-}
-
 .nav-bar button {
   padding: 1.1rem 2rem;
   border-radius: 12px;
@@ -92,7 +102,6 @@ section {
   height: calc(100vh - 8rem);
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 8rem);
   padding: clamp(2rem, 6vw, 6rem);
 }
 .text {
@@ -110,8 +119,6 @@ section {
   color: var(--typography);
   text-align: center;
   animation: fadeup 1s ease-out forwards;
-
-
 }
 .sub-text {
   font-size: clamp(1.4rem, 3vw, 2rem);
@@ -133,7 +140,17 @@ section {
   align-items: center;
   cursor: pointer;
   margin: auto;
-  animation: fadeup 1s ease-out forwards;
+  animation: shopfadein 1s ease-out forwards;
+}
+@keyframes shopfadein {
+  from {
+    opacity: 0;
+    transform: translatex(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translatex(0);
+  }
 }
 .images {
   position: relative;
@@ -141,7 +158,6 @@ section {
   overflow: hidden;
   height: 100%;
   animation: imagefadein 1s ease-out forwards;
-
 }
 .image {
   filter: drop-shadow(-4rem 0.8rem 0.7rem rgba(0, 0, 0, 0.5));
@@ -154,6 +170,19 @@ section {
   transform: translate(-50%, -50%);
 }
 
+/* For laptop screen */
+@media (min-width: 425px) {
+  #section-1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+  .image {
+    width: 100%;
+    max-width: 650px;
+  }
+}
+
 @keyframes fadeup {
   from {
     opacity: 0;
@@ -163,20 +192,7 @@ section {
     opacity: 1;
     transform: translateY(0);
   }
-  
 }
-/* 
-@keyframes fadeOutOnScroll {
-  from {
-    opacity: 1;
-    transform:  scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: scale(0.9); 
-  }
-} */
-
 @keyframes imagefadein {
   from {
     opacity: 0;
@@ -186,7 +202,6 @@ section {
     opacity: 1;
     transform: translatex(0);
   }
-  
 }
 
 .container {
@@ -446,6 +461,7 @@ button:hover {
   align-items: center;
   transition: all 0.3s ease;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
 }
 .Menu-photo {
   width: 200px;
@@ -529,6 +545,7 @@ footer {
   padding: 2rem;
   text-align: center;
   color: white;
+  height: 7rem;
 }
 footer p {
   font-size: 1.8rem;
@@ -536,7 +553,7 @@ footer p {
 
 .scroll-to-top {
   position: fixed;
-  bottom: 5.5rem;
+  bottom: 6rem;
   right: 2rem;
   color: var(--typography);
   border: none;
@@ -550,4 +567,67 @@ footer p {
 .scroll-to-top img {
   width: 20px;
   height: 20px;
+}
+
+#section-5 {
+  display: grid;
+  padding: clamp(2rem, 6vw, 6rem);
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+}
+.review-right {
+  display: grid;
+  gap: 3rem;
+}
+.review-text {
+  max-width: 50rem;
+  height: 30rem;
+  font-size: 4rem;
+  border: 2px solid var(--natural);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.review-text p {
+  font-weight: 500;
+  color: var(--typography);
+}
+.review-card {
+  width: 100%;
+  max-width: 300px;
+  height: 40rem;
+  background-color: var(--button-background);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  grid-area: 1/1;
+}
+.review-name{
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--natural);
+}
+.review-date {
+  font-size: 1.4rem;
+  opacity: 0.7;
+  margin-bottom: 1.5rem;
+}
+.review-card img {
+  width: 200px;
+  height: 250px;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+.review-info {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(2 , 30px);
+  grid-template-areas:
+    "name date"
+    "comment comment";
 }
