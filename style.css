@@ -107,7 +107,7 @@ section {
 .text {
   display: flex;
   flex-direction: column;
-  padding: 10rem 0 7rem 0;
+  padding: 7rem 0 3rem 0;
   gap: 3rem;
 }
 
@@ -156,8 +156,8 @@ section {
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 100%;
-  animation: imagefadein 1s ease-out forwards;
+  height: 300px;
+  animation: imagefade 1s ease-out forwards;
 }
 .image {
   filter: drop-shadow(-4rem 0.8rem 0.7rem rgba(0, 0, 0, 0.5));
@@ -171,7 +171,7 @@ section {
 }
 
 /* For laptop screen */
-@media (min-width: 425px) {
+@media (min-width: 720px) {
   #section-1 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -180,6 +180,20 @@ section {
   .image {
     width: 100%;
     max-width: 650px;
+  }
+  .images {
+    height: 50rem;
+    animation: imagefadein 1s ease-out forwards;
+  }
+  @keyframes imagefadein {
+    from {
+      opacity: 0;
+      transform: translatex(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translatex(0);
+    }
   }
 }
 
@@ -193,14 +207,15 @@ section {
     transform: translateY(0);
   }
 }
-@keyframes imagefadein {
+
+@keyframes imagefade {
   from {
     opacity: 0;
-    transform: translatex(20px);
+    transform: translatey(20px);
   }
   to {
     opacity: 1;
-    transform: translatex(0);
+    transform: translateY(0);
   }
 }
 /* about section */
@@ -265,6 +280,20 @@ section {
   .about-image img {
     width: 250px;
     height: 250px;
+  }
+  .nav-item {
+    gap: 4rem;
+  }
+  .nav-item a {
+    font-size: medium;
+  }
+  .nav-bar button {
+    padding: 1rem 1.5rem;
+  }
+
+  .nav-bar .logo {
+    width: 10rem;
+    height: 7rem;
   }
 }
 .container {
@@ -689,10 +718,14 @@ footer .social-media {
   padding: clamp(2rem, 6vw, 6rem);
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
+  
 }
 .review-right {
-  display: grid;
-  gap: 3rem;
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+  align-self: flex-end;
+  overflow-x: auto;
 }
 .review-text {
   max-width: 50rem;
@@ -703,13 +736,14 @@ footer .social-media {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .review-text p {
   font-weight: 500;
   color: var(--typography);
 }
 .review-card {
-  width: 100%;
+min-width: 300px;
   max-width: 300px;
   height: 40rem;
   background-color: var(--button-background);
@@ -718,8 +752,7 @@ footer .social-media {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
-  grid-area: 1/1;
+  padding: 1rem;
 }
 .review-name {
   font-size: 1.8rem;

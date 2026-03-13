@@ -1,6 +1,7 @@
 const ham = document.querySelector(".ham");
 const closeBtn = document.querySelector(".close");
 const navItems = document.querySelector(".nav-items");
+const body = document.querySelector("body");
 
 ham.addEventListener("click", () => {
   navItems.classList.add("active");
@@ -13,6 +14,7 @@ window.addEventListener("keydown", (event) => {
     navItems.classList.remove("active");
   }
 });
+
 
 const openBtn = document.querySelector(".book-now");
 const container = document.querySelector(".container");
