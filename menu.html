@@ -1,223 +1,340 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coffee Menu</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coffee Menu</title>
+    <link rel="shortcut icon" href="assects/logo.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
-<style>
-:root {
-  --primarybackground: #efe9e3;
-  --secondaryElement: #d2b48c;
-  --natural: #708238;
-  --typography: #3c2f2f;
-  --button-background: #c9b59c;
-}
+    <style>
+      :root {
+        --primarybackground: #efe9e3;
+        --secondaryElement: #d2b48c;
+        --natural: #708238;
+        --typography: #3c2f2f;
+        --button-background: #c9b59c;
+      }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-html {
-  font-size: 62.5%; 
-}
-body {
-  font-family: "Comic Neue", cursive;
-  background: var(--primarybackground);
-  color: var(--typography);
-}
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 62.5%;
+      }
+      body {
+        font-family: "Comic Neue", cursive;
+        background: var(--primarybackground);
+        color: var(--typography);
+      }
 
-.menu-section {
-  padding: 8rem 8%;
-}
+      .menu-section {
+        padding: 8rem 8%;
+      }
 
-.menu-header {
-  text-align: center;
-  max-width: 60rem;
-  margin: 0 auto 6rem auto;
-}
+      .menu-header {
+        text-align: center;
+        max-width: 60rem;
+        margin: 0 auto 6rem auto;
+      }
+      .menu-header:nth-child(1) {
+        animation-delay: 0.5s;
+      }
+      @keyframes fadein {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-.menu-header h1 {
-  font-size: 4.6rem;
-  margin-bottom: 2rem;
-  letter-spacing: 1px;
-}
+      .menu-header h1 {
+        font-size: 4.6rem;
+        margin-bottom: 2rem;
+        letter-spacing: 1px;
+        animation: fadein 1s ease both;
+        animation-delay: 0.2s;
+      }
 
-.menu-header p {
-  font-size: 1.6rem;
-  line-height: 1.7;
-  opacity: 0.75;
-}
+      .menu-header p {
+        font-size: 1.6rem;
+        line-height: 1.7;
+        opacity: 0.75;
+        animation: fadein 1s ease both;
+      }
 
-.menu-category {
-  margin-bottom: 7rem;
-}
+      .menu-category {
+        margin-bottom: 7rem;
+      }
 
-.category-title {
-  font-size: 2.2rem;
-  margin-bottom: 3rem;
-  padding-left: 16px; 
-  border-left: 5px solid var(--secondaryElement);
-}
+      .category-title {
+        font-size: 2.2rem;
+        margin-bottom: 3rem;
+        padding-left: 16px;
+        border-left: 5px solid var(--secondaryElement);
+      }
 
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
-  gap: 3rem;
-}
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+        gap: 3rem;
+      }
+      .menu-card-wrapper {
+        animation: fadeUp 0.7s both;
+      }
+      .menu-card-wrapper:nth-child(1) {
+        animation-delay: 200ms;
+      }
+      .menu-card-wrapper:nth-child(2) {
+        animation-delay: 250ms;
+      }
+      .menu-card-wrapper:nth-child(3) {
+        animation-delay: 300ms;
+      }
+      .menu-card-wrapper:nth-child(4) {
+        animation-delay: 350ms;
+      }
+      .menu-card-wrapper:nth-child(5) {
+        animation-delay: 400ms;
+      }
 
-.menu-card {
-  background: #fbfafa;
-  padding: 3rem;
-  border-radius: 14px; 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.06); 
-}
+      .menu-card {
+        background: #fbfafa45;
+        padding: 3rem;
+        border-radius: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        cursor: pointer;
+        height: 100%;
+      }
+      .menu-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 22px 45px rgba(0, 0, 0, 0.12);
+      }
 
-.menu-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 22px 45px rgba(0,0,0,0.08);
-}
-.card {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    animation: fadeUp 0.7s ease both;
-  }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-  .card:nth-child(1) { animation-delay: 0.1s; }
-  .card:nth-child(2) { animation-delay: 0.2s; }
-  .card:nth-child(3) { animation-delay: 0.3s; }
-  .card:nth-child(4) { animation-delay: 0.4s; }
-  .card:nth-child(5) { animation-delay: 0.5s; }
+      .menu-img {
+        width: 100%;
+        height: 16rem;
+        object-fit: cover;
+        border-radius: 10px;
+        display: block;
+        transition: transform 0.4s ease;
+      }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+      .menu-card:hover .menu-img {
+        transform: scale(1.04);
+      }
 
+      .menu-img-wrapper {
+        width: 100%;
+        overflow: hidden;
+        border-radius: 10px;
+      }
 
-.menu-info h3 {
-  font-size: 1.8rem;
-  margin-bottom: 0.8rem;
-}
+      .menu-info h3 {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+      }
 
-.menu-info p {
-  font-size: 1.4rem;
-  opacity: 0.7;
-}
+      .menu-info p {
+        font-size: 1.4rem;
+        opacity: 0.7;
+      }
 
-.price {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--natural);
-}
+      .price {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--natural);
+      }
 
-@media (max-width: 768px) {
+      @media (max-width: 768px) {
+        .menu-section {
+          padding: 6rem 6%;
+        }
 
-  .menu-section {
-    padding: 6rem 6%;
-  }
-
-  .menu-header h1 {
-    font-size: 3.6rem;
-  }
-}
-
-@media (max-width: 600px) {
-
-  .menu-card {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.5rem;
-  }
-
-  .price {
-    align-self: flex-end;
-  }
-}
-
-</style>
-</head>
-<body>
-<section class="menu-section">
-  <div class="menu-header">
-    <h1>Our Coffee Menu</h1>
-    <p>
-      Premium beans. Expert roasting. Crafted beverages.
-      Discover bold flavors and smooth blends curated for coffee lovers.
-    </p>
-  </div>
-  <div class="menu-category">
-    <h2 class="category-title">Espresso Based</h2>
-    <div class="menu-grid">
-      <div class="menu-card">
-        <div class="menu-info">
-          <h3>Classic Espresso</h3>
-          <p>Strong, rich and aromatic shot.</p>
-        </div>
-        <span class="price">Rs509</span>
+        .menu-header h1 {
+          font-size: 3.6rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="menu-section">
+      <div class="menu-header">
+        <h1>Our Heaven Roaster Menu</h1>
+        <p>
+          Premium beans. Expert roasting. Crafted beverages. Discover bold
+          flavors and smooth blends curated for coffee lovers.
+        </p>
       </div>
-      <div class="menu-card">
-        <div class="menu-info">
-          <h3>Americano</h3>
-          <p>Smooth espresso with hot water.</p>
+
+      <div class="menu-category">
+        <h2 class="category-title">Espresso Based</h2>
+        <div class="menu-grid">
+          <div class="menu-card-wrapper">
+            <div class="menu-card">
+              <div class="menu-img-wrapper">
+                <img
+                  class="menu-img"
+                  src="assects/classic_expresso.jpg"
+                  alt="Classic Espresso"
+                />
+              </div>
+              <div class="menu-info">
+                <h3>Classic Espresso</h3>
+                <p>Strong, rich and aromatic shot.</p>
+              </div>
+              <span class="price">Rs 509</span>
+            </div>
+          </div>
+          <div class="menu-card-wrapper">
+            <div class="menu-card">
+              <div class="menu-img-wrapper">
+                <img
+                  class="menu-img"
+                  src="assects/americano.jpg"
+                  alt="Americano"
+                />
+              </div>
+              <div class="menu-info">
+                <h3>Americano</h3>
+                <p>Smooth espresso with hot water.</p>
+              </div>
+              <span class="price">Rs 600</span>
+            </div>
+          </div>
+          <div class="menu-card-wrapper">
+            <div class="menu-card">
+              <div class="menu-img-wrapper">
+                <img
+                  class="menu-img"
+                  src="assects/cappucchino.jpg"
+                  alt="Cappuccino"
+                />
+              </div>
+              <div class="menu-info">
+                <h3>Cappuccino</h3>
+                <p>Balanced espresso with creamy foam.</p>
+              </div>
+              <span class="price">Rs 650</span>
+            </div>
+          </div>
+          <div class="menu-card-wrapper">
+            <div class="menu-card">
+              <div class="menu-img-wrapper">
+                <img
+                  class="menu-img"
+                  src="assects/caramel_latte.jpg"
+                  alt="Caramel Latte"
+                />
+              </div>
+              <div class="menu-info">
+                <h3>Caramel Latte</h3>
+                <p>Sweet caramel with silky milk blend.</p>
+              </div>
+              <span class="price">Rs 690</span>
+            </div>
+          </div>
         </div>
-        <span class="price">Rs600</span>
       </div>
-      <div class="menu-card">
-        <div class="menu-info">
-          <h3>Cappuccino</h3>
-          <p>Balanced espresso with creamy foam.</p>
+
+      <div class="menu-category">
+        <h2 class="category-title">Cold &amp; Iced</h2>
+        <div class="menu-grid">
+          <div class="menu-card-wrapper">
+            <div class="menu-card">
+              <div class="menu-img-wrapper">
+                <img
+                  class="menu-img"
+                  src="assects/iced_latte.jpg"
+                  alt="Iced Mocha"
+                />
+              </div>
+              <div class="menu-info">
+                <h3>Iced Mocha</h3>
+                <p>Chocolate espresso served chilled.</p>
+              </div>
+              <span class="price">Rs 720</span>
+            </div>
+          </div>
+          <div class="menu-card-wrapper">
+            <div class="menu-card">
+              <div class="menu-img-wrapper">
+                <img
+                  class="menu-img"
+                  src="assects/nitrro.png"
+                  alt="Cold Brew"
+                />
+              </div>
+              <div class="menu-info">
+                <h3>Cold Brew</h3>
+                <p>18-hour slow-steeped perfection.</p>
+              </div>
+              <span class="price">Rs 740</span>
+            </div>
+          </div>
+          <div class="menu-card-wrapper">
+            <div class="menu-card">
+              <div class="menu-img-wrapper">
+                <img  
+                  class="menu-img"
+                  src="assects/Iced_Vanilla_Almond_Milk_Latte_5_Minutes_-_Chasety.jpg"
+                  alt="Vanilla Iced Latte"
+                />
+              </div>
+              <div class="menu-info">
+                <h3>Vanilla Iced Latte</h3>
+                <p>Espresso infused with vanilla notes.</p>
+              </div>
+              <span class="price">Rs 760</span>
+            </div>
+          </div>
+          <div class="menu-card-wrapper">
+            <div class="menu-card">
+              <div class="menu-img-wrapper">
+                <img
+                  class="menu-img"
+                  src="assects/Hazelnut_Latte.jpg"
+                  alt="Hazelnut Frappe"
+                />
+              </div>
+              <div class="menu-info">
+                <h3>Hazelnut Frappe</h3>
+                <p>Blended creamy hazelnut delight.</p>
+              </div>
+              <span class="price">Rs 800</span>
+            </div>
+          </div>
         </div>
-        <span class="price">Rs650</span>
       </div>
-      <div class="menu-card">
-        <div class="menu-info">
-          <h3>Caramel Latte</h3>
-          <p>Sweet caramel with silky milk blend.</p>
-        </div>
-        <span class="price">Rs690</span>
-      </div>
-    </div>
-  </div>
-  <div class="menu-category">
-    <h2 class="category-title">Cold & Iced</h2>
-    <div class="menu-grid">
-      <div class="menu-card">
-        <div class="menu-info">
-          <h3>Iced Mocha</h3>
-          <p>Chocolate espresso served chilled.</p>
-        </div>
-        <span class="price">Rs720</span>
-      </div>
-      <div class="menu-card">
-        <div class="menu-info">
-          <h3>Cold Brew</h3>
-          <p>18-hour slow-steeped perfection.</p>
-        </div>
-        <span class="price">Rs740</span>
-      </div>
-      <div class="menu-card">
-        <div class="menu-info">
-          <h3>Vanilla Iced Latte</h3>
-          <p>Espresso infused with vanilla notes.</p>
-        </div>
-        <span class="price">Rs7.19</span>
-      </div>
-      <div class="menu-card">
-        <div class="menu-info">
-          <h3>Hazelnut Frappe</h3>
-          <p>Blended creamy hazelnut delight.</p>
-        </div>
-        <span class="price">Rs7.99</span>
-      </div>
-    </div>
-  </div>
-</section>
-</body>
+    </section>
+  </body>
 </html>
