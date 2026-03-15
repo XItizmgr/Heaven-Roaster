@@ -15,7 +15,6 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
-
 const openBtn = document.querySelector(".book-now");
 const container = document.querySelector(".container");
 const card1 = document.querySelector(".card");
@@ -80,24 +79,22 @@ scrolltop.addEventListener("click", () => {
   });
 });
 
-const menucard = document.querySelector(".menu-flex");
 const order = document.querySelector(".shop-now");
-menucard.addEventListener("click", (event) => {
-  if (menucard.contains(event.target)) {
+const menuContainers = document.querySelectorAll(".menu-flex");
+menuContainers.forEach((event) => {
+  event.addEventListener("click", (event) => {
+    const card = event.target.closest(".menu-card");
+    if (!card) return;
     card1.classList.add("show");
     container.classList.add("hidden");
-    console.log("clicked");
-    console.log(event.target);
-    return;
-  }
+  });
 });
-order.addEventListener("click", () => {
+order.addEventListener("click", (e) => {
+  e.preventDefault();
   card1.classList.add("show");
   container.classList.add("hidden");
 });
-
 // login from localData
-
 const RegisterBtn = document.querySelector(".Register");
 const checkbox = document.querySelector(".Checking");
 const InputValue = document.querySelectorAll(".input");
