@@ -9,7 +9,7 @@ const espressoBased = [
     name: "Americano",
     description: "Smooth espresso with water.",
     price: "Rs 400",
-    image: "assects/americano.jpg"
+    image: "assects/Americano.jpg"
   },
   {
     name: "Cappuccino",
