@@ -42,5 +42,4 @@ The project handles complex state management without external libraries:
 2. Open index.html in any modern web browser.
 3. To update menu items, modify the data arrays in menu.js.
 
-## License
-This project is open source and available under the MIT License.
+
