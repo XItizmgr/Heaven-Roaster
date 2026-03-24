@@ -616,9 +616,12 @@
           <input type="file" id="pic_change" accept="image/*" hidden />
         </div>
 
-        <div id="user_profile_name"></div>
+        <div id="user_profile_name">
+          <h2>Welcome <span id="user-display"></span></h2>
+  <p id="user-email-display"></p>
+        </div>
 
-        <button type="submit">Log Out</button>
+        <button type="submit" class="logout">Log Out</button>
       </div>
       <div class="container">
         <div class="card">
@@ -672,9 +675,9 @@
             <input
               type="text"
               placeholder="Enter your email or User name "
-              class="login-input"
+              class="login-username"
             />
-            <input type="password" placeholder="password" class="login-input" />
+            <input type="password" placeholder="password" class="login-password" />
             <button type="submit" class="second-login">Login now</button>
           </form>
         </div>

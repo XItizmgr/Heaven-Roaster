@@ -355,7 +355,7 @@ section {
 }
 
 form .input,
-.login-input {
+.login-username,.login-password{
   width: 100%;
   padding: 1.4rem;
   margin-bottom: 1.5rem;
@@ -1127,7 +1127,7 @@ canvas {
   margin-bottom: 1.5rem;
 }
 
-#user_profile_name h2 {
+#user_profile_name h2,#user_profile_name h2 span {
   font-family: "Inria Serif", serif;
   font-size: 1.5rem;
   font-weight: 700;
@@ -1135,7 +1135,7 @@ canvas {
   margin: 0 0 4px;
 }
 
-#user_profile_name span {
+#user_profile_name p {
   font-size: 1.1rem;
   color: rgba(57, 39, 39, 0.5);
 }

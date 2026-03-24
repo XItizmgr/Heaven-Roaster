@@ -44,6 +44,47 @@ const ICONS = {
 
   info: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>`,
 };
+const username = document.getElementById("user-display");
+const useremail = document.getElementById("user-email-display");
+let userData = JSON.parse(localStorage.getItem("allUsers")) || [];
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+if (currentUser) {
+  showProfile();
+  if (username) username.textContent = currentUser["user-name"];
+  if (useremail) useremail.textContent = currentUser.email;
+}
+
+document.querySelector(".logout").addEventListener("click", (e) => {
+  e.preventDefault();
+  localStorage.removeItem("currentUser");
+  openBtn.style.display = "block";
+  navProfile.style.display = "none";
+  userProfilecontainer.classList.remove("active");
+
+  alert("See you later! 👋", "info");
+});
+
+const secondLogin = document.querySelector(".second-login");
+
+secondLogin.addEventListener("click", (e) => {
+  e.preventDefault();
+  const loginUserName = document.querySelector(".login-username").value.trim();
+  const loginpassword = document.querySelector(".login-password").value.trim();
+  const FindPerson = userData.find(
+    (user) =>
+      user["user-name"] === loginUserName && user.password === loginpassword,
+  );
+  if (FindPerson) {
+    localStorage.setItem("currentUser", JSON.stringify(FindPerson));
+    showProfile();
+    username.textContent = FindPerson["user-name"];
+    useremail.textContent = FindPerson.email;
+    ToRemoveRegister();
+    alert(`Welcome back ${FindPerson["user-name"]}!`, "success");
+  } else {
+    alert("Invalid username or password", "error");
+  }
+});
 
 RegisterBtn.addEventListener("click", (e) => {
   let data = {};
@@ -58,6 +99,32 @@ RegisterBtn.addEventListener("click", (e) => {
   InputValue.forEach((input) => {
     data[input.id] = input.value.trim();
   });
+  if (data["user-name"].length < 4) {
+    alert("User name must contain atlest 4 letter ", "warning");
+    return;
+  }
+  const isDuplicate = userData.some((user) => user.email === data.email);
+  if (isDuplicate) {
+    alert("This email is already registered!", "warning");
+    return;
+  }
+
+  if (!data.email.includes("@")) {
+    alert("Please enter valid email", "warning");
+    return;
+  }
+
+  if (
+    !data.email.includes(".") ||
+    data.email.lastIndexOf(".") < data.email.indexOf("@")
+  ) {
+    alert("Please enter a valid domain (e.g., .com)", "warning");
+    return;
+  }
+  if (data.password.length < 4) {
+    alert("Password must be atlest 4 letter ");
+    return;
+  }
   if (data.password !== data["confirm-password"]) {
     alert("Password not match", "warning");
     return;
@@ -67,12 +134,21 @@ RegisterBtn.addEventListener("click", (e) => {
     return;
   }
 
+  showProfile();
+  ToRemoveRegister();
+  alert("Yayyyyyyyyyyyyy u did well😏", "success");
+  form.reset();
+  userData.push(data);
+  if (username) username.textContent = data["user-name"];
+  if (useremail) useremail.textContent = data.email;
+  localStorage.setItem("allUsers", JSON.stringify(userData));
+  localStorage.setItem("currentUser", JSON.stringify(data));
+  console.log(userData);
+});
+function showProfile() {
   openBtn.style.display = "none";
   navProfile.style.display = "block";
- ToRemoveRegister();
- alert("Yayyyyyyyyyyyyy u did well😏","success")
- form.reset
-});
+}
 ham.addEventListener("click", () => {
   navItems.classList.add("active");
 });
@@ -96,13 +172,13 @@ openBtn.addEventListener("click", () => {
 });
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
-    ToRemoveRegister()
+    ToRemoveRegister();
     form.reset();
   }
 });
 container.addEventListener("click", (event) => {
   if (event.target === container) {
-    ToRemoveRegister()
+    ToRemoveRegister();
     form.reset();
   }
 });
@@ -112,6 +188,7 @@ login.addEventListener("click", () => {
 });
 function ToRemoveRegister() {
   container.classList.remove("hidden");
+  card1.classList.remove("show");
   card2.classList.remove("show");
 }
 
@@ -233,7 +310,7 @@ ContactForm.addEventListener("submit", async (e) => {
   }
 });
 
-// createing a simple toast 
+// createing a simple toast
 function alert(message, type = "error", duration = 4000) {
   const div = document.createElement("div");
   div.className = `alert-toast ${type}`;
@@ -278,7 +355,7 @@ fileInput.addEventListener("change", (e) => {
   navProfile.src = URL.createObjectURL(file);
 });
 
-// Adding review 
+// Adding review
 
 Reviewform.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -315,7 +392,7 @@ Reviewform.addEventListener("submit", (e) => {
   alert("your review is successfully submited 🫡", "success");
   Reviewform.reset();
 });
-// For changing the design of label 
+// For changing the design of label
 
 chooseeFile.addEventListener("change", (e) => {
   const file = chooseeFile.files[0];
