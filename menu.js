@@ -144,6 +144,8 @@ premiumSpecialties.forEach(item => TocreateMenuItems(item, premium));
 
 
 function TocreateMenuItems(item ,container) {
+  const wrapper = document.createElement("div");
+  wrapper.className = "menu-wrapper"
 const card = document.createElement("article");
   card.className = "menu-card";
   card.innerHTML = `
@@ -156,5 +158,7 @@ const card = document.createElement("article");
     </div>
     <span class="price">${item.price}</span>
   `;
-   container.appendChild(card);
+  wrapper.appendChild(card)
+   container.appendChild(wrapper);
+
 }
