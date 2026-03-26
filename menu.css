@@ -160,7 +160,7 @@ body {
 
 @media (max-width: 768px) {
   .menu-section {
-    padding: 6%;
+    padding: 10rem 6%;
   }
 
   .menu-header h1 {
